@@ -17,9 +17,9 @@ public class Main {
     public static void main(String[] args) {
 
         //initialize arrays of random ints
-        int[] arr1 = RandomGenerator.generateRandomizedArray(50);
-        int[] arr2 = RandomGenerator.generateRandomizedArray(100);
-        int[] arr3 = RandomGenerator.generateRandomizedArray(200);
+        int[] arr1 = RandomGenerator.generateRandomizedArray(5);
+        int[] arr2 = RandomGenerator.generateRandomizedArray(10);
+        int[] arr3 = RandomGenerator.generateRandomizedArray(20);
 
         //each handler is create to handle a different d-nary heap size
         Heapifier binaryHeapifier = new Heapifier(2);
@@ -30,14 +30,21 @@ public class Main {
         //print binary heaps
         System.out.println("\r\n ///////////Binary Heaps\\\\\\\\\\\\");
         printStats(binaryHeapifier.heapSort(arr1));
+        printArray(arr1);
         printStats(binaryHeapifier.heapSort(arr2));
+        printArray(arr2);
         printStats(binaryHeapifier.heapSort(arr3));
+        printArray(arr3);
 
-        //print binary heaps
+        //print trinary heaps
         System.out.println("\r\n ///////////Trinary Heaps\\\\\\\\\\\\");
         printStats(trinaryHeapifier.heapSort(arr1));
+        printArray(arr1);
         printStats(trinaryHeapifier.heapSort(arr2));
+        printArray(arr2);
         printStats(trinaryHeapifier.heapSort(arr3));
+        printArray(arr3);
+
 
         //print quaternary heaps
         System.out.println("\r\n ///////////Quaternary Heaps\\\\\\\\\\\\");
@@ -53,7 +60,7 @@ public class Main {
 
         System.out.println("\r\n DONE!");
     }
-    private static void printArray(int[] arr) {
+    public static void printArray(int[] arr) {
         for (int anArr : arr) {
             System.out.print(anArr + " ");
         }

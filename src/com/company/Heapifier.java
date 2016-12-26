@@ -25,9 +25,9 @@ public class Heapifier {
         StatKeeper statKeeper = new StatKeeper();
         //construct a heap out of the array
         buildMaxHeap(arr,statKeeper);
-        for(int i = arr.length-1; i >= 1; i--) {
+        for(int i = arr.length-1; i >= 0; i--) {
             swap(arr,statKeeper,0,i);
-            maxHeapify(arr,statKeeper,0, i-1);
+            maxHeapify(arr,statKeeper,0, i);
         }
         return statKeeper;
     }
@@ -96,14 +96,14 @@ public class Heapifier {
     private void maxHeapify(int [] arr, StatKeeper statKeeper, int currentNode, int arrayBound) {
         int largest = currentNode;
         //iterate over the direct children of the current node
-        for (int j = 0; j <= mNumOfChildren; j++) {
+        for (int j = 0; j < mNumOfChildren; j++) {
             int nthSon = getNthSon(arr, currentNode, j);
             /* check for recursion terminating conditions:
             1) there are no children to the node
             2) the child is outside the scope of the array we defined
             3) the current node is outside the scope of the array
              */
-            if (nthSon == -1 || nthSon>= arrayBound || currentNode >= arrayBound) {
+            if (nthSon == -1 || nthSon>= arrayBound) {
                 break;
             }
             //compare to find the largest child of the current node
