@@ -15,23 +15,23 @@ public class HeapHandler {
         mNumOfChildren = numOfChildren;
     }
 
-    public int getNthSon(int[] arr, int i, int son) {
+    private int getNthSon(int[] arr, int i, int son) {
         return arr[i * mNumOfChildren + son];
     }
 
-    public int[] buildMaxHeap(int[] arr) {
+    private int[] buildMaxHeap(int[] arr) {
         for (int i = arr.length/2; i >= 0; i--) {
-            // TODO call the real max heapify
             maxHeapify(arr,i);
         }
         return arr;
     }
 
-    public int getRightSon(int [] arr, int i) {
+//    TODO get rid of the right/left sons
+    private int getRightSon(int [] arr, int i) {
         return arr[(mNumOfChildren * i) + 1];
     }
-
-    public int getLeftSon(int [] arr, int i) {
+//    TODO get rid of the right/left sons
+    private int getLeftSon(int [] arr, int i) {
         return arr[(mNumOfChildren * i) - (mNumOfChildren - 2)];
     }
 
@@ -53,13 +53,10 @@ public class HeapHandler {
         return maxPos;
     }
 
-    /*
-    AMIT IA GEVER ♡♡♡
-     */
     public void maxHeapify(int [] arr, int i) {
         int largest;
         for (int j = 0; j < mNumOfChildren; j++) {
-            if (j <= arr.length && getNthSon(arr,i,j) > arr[i]){
+            if (j < arr.length && getNthSon(arr,i,j) > arr[i]){
                 largest = j;
             }else {
                 largest = i;
