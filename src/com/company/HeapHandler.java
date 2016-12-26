@@ -27,13 +27,11 @@ public class HeapHandler {
         return arr;
     }
 
-    public int getRightSon(int [] arr, int i)
-    {
+    public int getRightSon(int [] arr, int i) {
         return arr[(mNumOfChildren * i) + 1];
     }
 
-    public int getLeftSon(int [] arr, int i)
-    {
+    public int getLeftSon(int [] arr, int i) {
         return arr[(mNumOfChildren * i) - (mNumOfChildren - 2)];
     }
 
@@ -55,8 +53,9 @@ public class HeapHandler {
         return maxPos;
     }
 
-
-
+    /*
+    AMIT IA GEVER ♡♡♡
+     */
     public void maxHeapify(int [] arr, int i) {
         int largest;
         for (int j = 0; j < mNumOfChildren; j++) {
