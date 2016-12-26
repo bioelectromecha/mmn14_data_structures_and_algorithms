@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
         int[] arr1 = RandomGenerator.generateRandomizedArray(10);
         HeapHandler heapHandler = new HeapHandler(3);
-
         heapHandler.buildMaxHeap(arr1);
         printArray(arr1);
 
