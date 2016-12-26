@@ -16,7 +16,7 @@ public class HeapHandler {
     }
 
     private int getNthSon(int[] arr, int i, int son) {
-        int sonIndex = mNumOfChildren * (i - 1) + son + 1;
+        int sonIndex = mNumOfChildren * i + son + 1;
         if (sonIndex >= arr.length) {
             return -1;
         }
@@ -59,7 +59,7 @@ public class HeapHandler {
 
     private void maxHeapify(int [] arr, int i) {
         int largest;
-        for (int j = 1; j <= mNumOfChildren; j++) {
+        for (int j = 0; j <= mNumOfChildren; j++) {
             int nthSon = getNthSon(arr, i, j);
             if (nthSon == -1) {
                 return;
@@ -70,7 +70,7 @@ public class HeapHandler {
                 largest = i;
             }
 
-            if (largest > i) {
+            if (largest != i) {
                 swap(arr[i], arr[largest]);
                 maxHeapify(arr,largest);
             }
