@@ -66,4 +66,16 @@ public class HeapHandler {
             }
         }
     }
+
+    public void heapSort(int [] arr)
+    {
+        int len = arr.length;
+        buildMaxHeap(arr);
+        for (int i = len - 1; i >= 1; i--) {
+            swap(arr,0,i);
+            len--;
+            maxHeapify(arr,0);
+        }
+    }
 }
+

@@ -4,8 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
         int[] arr1 = RandomGenerator.generateRandomizedArray(10);
-        HeapHandler heapHandler = new HeapHandler(3);
+        HeapHandler heapHandler = new HeapHandler(2);
         heapHandler.buildMaxHeap(arr1);
+        printArray(arr1);
+        System.out.println();
+        heapHandler.heapSort(arr1);
         printArray(arr1);
 
 
