@@ -4,7 +4,7 @@ package com.company;
 import java.util.Random;
 
 /**
- * Created by roman on 12/26/16.
+ * this class is used to generate arrays of randomized elements,  of specified length
  */
 public class RandomGenerator {
     private static final int MAX_INT_SIZE = 1024;
