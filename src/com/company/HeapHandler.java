@@ -59,21 +59,18 @@ public class HeapHandler {
 
     public void maxHeapify(int [] arr, int i) {
         int largest;
-        int l = getLeftSon(arr, i);
-        int r = getRightSon(arr, i);
-        if (l <= arr.length && arr[l] > arr[i]){
-            largest = l;
-         }else {
-            largest = i;
+        for (int j = 0; j < mNumOfChildren; j++) {
+            if (j <= arr.length && getNthSon(arr,i,j) > arr[i]){
+                largest = j;
+            }else {
+                largest = i;
+            }
+
+            if (largest > i) {
+                swap(arr[i], arr[largest]);
+                maxHeapify(arr,largest);
+            }
         }
 
-        if (r <= arr.length && arr[r] > arr[largest]) {
-            largest = r;
-        }
-
-        if (largest > i) {
-            swap(arr[i], arr[largest]);
-        }
-        maxHeapify(arr,largest);
     }
 }
