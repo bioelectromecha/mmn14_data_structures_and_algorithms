@@ -1,12 +1,16 @@
 package com.company;
 
 /**
- * Created by roman on 12/26/16.
+ * This class is used to construct and perform operations on arrays
  */
 public class HeapHandler {
 
     private int mNumOfChildren;
 
+    /**
+     * construct a HeapHandler to handle trees with numOfChildren
+     * @param numOfChildren the number of chidlren of each heap member
+     */
     public HeapHandler(int numOfChildren) {
         mNumOfChildren = numOfChildren;
     }
@@ -17,6 +21,14 @@ public class HeapHandler {
 
     public int getNthSon(int[] arr, int i, int son) {
         return arr[i * mNumOfChildren + son];
+    }
+
+    public int[] buildMaxHeap(int[] arr) {
+        for (int i = arr.length/2; i >= 0; i--) {
+            // TODO call the real max heapify
+            maxHeapify(arr);
+        }
+        return new int[0];
     }
 
     public int getRightSon(int [] arr, int i)
