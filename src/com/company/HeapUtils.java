@@ -3,15 +3,15 @@ package com.company;
 /**
  * This class is used to construct and perform operations on arrays
  */
-public class HeapHandler {
+public class HeapUtils {
 
     private int mNumOfChildren;
 
     /**
-     * construct a HeapHandler to handle trees with numOfChildren
+     * construct a HeapUtils to handle trees with numOfChildren
      * @param numOfChildren the number of chidlren of each heap member
      */
-    public HeapHandler(int numOfChildren) {
+    public HeapUtils(int numOfChildren) {
         mNumOfChildren = numOfChildren;
     }
 
@@ -58,13 +58,12 @@ public class HeapHandler {
 
     private void maxHeapify(int [] arr, int i, int size) {
         int largest;
-
         for (int j = 0; j <= mNumOfChildren; j++) {
             int nthSon = getNthSon(arr, i, j);
-            if (nthSon == -1) {
+            if (nthSon == -1 || nthSon>=size || i>=size) {
                 return;
             }
-            if (j < size &&  arr[i] < arr[nthSon]){
+            if (arr[i] < arr[nthSon]){
                 largest = nthSon;
             }else {
                 largest = i;
@@ -72,20 +71,31 @@ public class HeapHandler {
 
             if (largest > i) {
                 swap(arr, i, nthSon);
-                maxHeapify(arr,largest);
+                maxHeapify(arr,largest,size);
             }
         }
     }
 
-    public void heapSort(int [] arr)
-    {
-        int size = arr.length;
-        buildMaxHeap(arr);
-        for (int i = size - 1; i >= 1; i--) {
+    public void heapSort(int[] arr) {
+        for(int i = arr.length-1; i >= 1; i--) {
             swap(arr,0,i);
-            size--;
-            maxHeapify(arr,0, size);
+            maxHeapify(arr,0, i-1);
         }
     }
+//
+//    /**
+//     * print out the received array
+//     * @param arr
+//     */
+//    public void printArray(int[] arr) {
+//        int treeDepth = calcLogarithm(mNumOfChildren, arr.length);
+//        for (int i = 0; i < ; i++) {
+//            System.out.print(arr[i]+" ");
+//        }
+//    }
+//
+//    private int calcLogarithm(int base, int num) {
+//        return (int)(Math.log(num) / Math.log(base));
+//    }
 }
 
