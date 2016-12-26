@@ -15,10 +15,6 @@ public class HeapHandler {
         mNumOfChildren = numOfChildren;
     }
 
-    public int[] maxHeapify(int[] arr) {
-        return new int[1];
-    }
-
     public int getNthSon(int[] arr, int i, int son) {
         return arr[i * mNumOfChildren + son];
     }
@@ -26,9 +22,9 @@ public class HeapHandler {
     public int[] buildMaxHeap(int[] arr) {
         for (int i = arr.length/2; i >= 0; i--) {
             // TODO call the real max heapify
-            maxHeapify(arr);
+            maxHeapify(arr,i);
         }
-        return new int[0];
+        return arr;
     }
 
     public int getRightSon(int [] arr, int i)
@@ -61,19 +57,23 @@ public class HeapHandler {
 
 
 
-    public void MAX_HEAPIFY(int [] arr, int i)
-    {
-        int largest = 0;
-        int l = getLeftSon(arr,i);
-        int r = getRightSon(arr,i);
-        if (l <= arr.length && arr[l] > arr[i])
+    public void maxHeapify(int [] arr, int i) {
+        int largest;
+        int l = getLeftSon(arr, i);
+        int r = getRightSon(arr, i);
+        if (l <= arr.length && arr[l] > arr[i]){
             largest = l;
-        else
+         }else {
             largest = i;
-        if (r <= arr.length && arr[r] > arr[largest])
+        }
+
+        if (r <= arr.length && arr[r] > arr[largest]) {
             largest = r;
-        if (largest > i)
-            swap(arr[i],arr[largest]);
-        MAX_HEAPIFY(arr,largest);
+        }
+
+        if (largest > i) {
+            swap(arr[i], arr[largest]);
+        }
+        maxHeapify(arr,largest);
     }
 }
