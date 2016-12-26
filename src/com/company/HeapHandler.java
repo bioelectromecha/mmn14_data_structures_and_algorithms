@@ -19,5 +19,15 @@ public class HeapHandler {
         return arr[i * mNumOfChildren + son];
     }
 
+    public int getRightSon(int [] arr, int i)
+    {
+        return arr[(mNumOfChildren * i) + 1];
+    }
+
+    public int getLeftSon(int [] arr, int i)
+    {
+        return arr[(mNumOfChildren * i) - (mNumOfChildren - 2)];
+    }
+
 
 }
