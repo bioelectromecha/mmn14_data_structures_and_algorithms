@@ -16,11 +16,15 @@ public class HeapHandler {
     }
 
     private int getNthSon(int[] arr, int i, int son) {
-        return arr[i * mNumOfChildren + son];
+        int sonIndex = mNumOfChildren * (i - 1) + son + 1;
+        if (sonIndex >= arr.length) {
+            return -1;
+        }
+        return sonIndex;
     }
 
-    private int[] buildMaxHeap(int[] arr) {
-        for (int i = arr.length/2; i >= 0; i--) {
+    public int[] buildMaxHeap(int[] arr) {
+        for (int i = (arr.length-1)/2; i >= 0; i--) {
             maxHeapify(arr,i);
         }
         return arr;
@@ -53,10 +57,14 @@ public class HeapHandler {
         return maxPos;
     }
 
-    public void maxHeapify(int [] arr, int i) {
+    private void maxHeapify(int [] arr, int i) {
         int largest;
-        for (int j = 0; j < mNumOfChildren; j++) {
-            if (j < arr.length && getNthSon(arr,i,j) > arr[i]){
+        for (int j = 1; j <= mNumOfChildren; j++) {
+            int nthSon = getNthSon(arr, i, j);
+            if (nthSon == -1) {
+                return;
+            }
+            if (j < arr.length &&  arr[i] < arr[nthSon]){
                 largest = j;
             }else {
                 largest = i;
