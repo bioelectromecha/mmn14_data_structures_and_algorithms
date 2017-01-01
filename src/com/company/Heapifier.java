@@ -10,7 +10,7 @@ public class Heapifier {
 
     /**
      * construct a Heapifier to handle trees with numOfChildren
-     * @param numOfChildren the number of chidlren of each heap member
+     * @param numOfChildren the number of children of each heap member
      */
     public Heapifier(int numOfChildren) {
         mNumOfChildren = numOfChildren;
@@ -71,7 +71,7 @@ public class Heapifier {
         int temp = arr[posA];
         arr[posA] = arr[posB];
         arr[posB]= temp;
-        statKeeper.numberOfSwaps++;
+        statKeeper.numberOfSwaps += 3;
     }
 
 
@@ -95,9 +95,11 @@ public class Heapifier {
      */
     private void maxHeapify(int [] arr, StatKeeper statKeeper, int currentNode, int arrayBound) {
         int largest = currentNode;
+        statKeeper.numberOfSwaps++;
         //iterate over the direct children of the current node
         for (int j = 0; j < mNumOfChildren; j++) {
             int nthSon = getNthSon(arr, currentNode, j);
+            statKeeper.numberOfSwaps++;
             /* check for recursion terminating conditions:
             1) there are no children to the node
             2) the child is outside the scope of the array we defined
@@ -110,11 +112,13 @@ public class Heapifier {
             if (arr[largest] < arr[nthSon]) {
                 statKeeper.numberOfComparisons++;
                 largest = nthSon;
+                statKeeper.numberOfSwaps++;
             }
         }
 
         // if the current node is smaller than one of it's children
         if (arr[currentNode] < arr[largest]) {
+            statKeeper.numberOfComparisons++;
             swap(arr,statKeeper, currentNode, largest);
             //rinse and repeat until you get a valid max heap
             maxHeapify(arr,statKeeper,largest, arrayBound);
