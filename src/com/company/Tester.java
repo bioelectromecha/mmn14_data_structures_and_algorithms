@@ -4,14 +4,14 @@ package com.company;
  * Created by roman on 1/1/17.
  */
 public class Tester {
+    private static final int ARRAY_SIZE = 1000;
+    private static final int MAX_NUM_OF_CHILDREN = 10000;
     public static void test() {
-        for (int i = 2; i < 10; i++) {
+        for (int i = 2; i < MAX_NUM_OF_CHILDREN; i++) {
             Heapifier heapifier = new Heapifier(i);
-            for (int j = 50; j <= 1000; j+=50) {
-                int[] arr = RandomGenerator.generateRandomizedArray(j);
-                StatKeeper stats = heapifier.heapSort(arr);
-                System.out.print("d="+i+"  n="+j+"  "+"  comparisons="+stats.numberOfComparisons+"  swaps="+stats.numberOfSwaps+"\r\n");
-            }
+            int[] arr = RandomGenerator.generateRandomizedArray(ARRAY_SIZE);
+            StatKeeper stats = heapifier.heapSort(arr);
+            System.out.print("d=" + i + "  n=" + ARRAY_SIZE + "  " + "  comparisons=" + stats.numberOfComparisons + "  swaps=" + stats.numberOfSwaps + "\r\n");
         }
     }
 }
