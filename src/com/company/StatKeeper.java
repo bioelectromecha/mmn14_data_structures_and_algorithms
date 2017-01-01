@@ -6,6 +6,6 @@ package com.company;
  */
 public class StatKeeper {
     public int numberOfComparisons = 0;
-    public int numberOfSwaps = 0;
+    public int numberOfAssignments = 0;
 
 }
